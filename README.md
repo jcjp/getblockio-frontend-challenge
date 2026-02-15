@@ -1,97 +1,163 @@
-# Next.js Ethereum Wallet with MetaMask SDK, Wagmi, and TailwindCSS
+i# Next.js Ethereum Wallet with MetaMask SDK, Wagmi, and TailwindCSS
 
-This project is a modern Ethereum wallet dApp built with **Next.js**, **React**, **TailwindCSS**, **Wagmi**, and the **MetaMask SDK**. It enables users to connect their MetaMask wallet and view their ETH and USDT balances on the Ethereum mainnet.
+This project is a modern Ethereum wallet dApp built with **Next.js**,
+**React**, **TailwindCSS**, **Wagmi**, and the **MetaMask SDK**. It
+enables users to connect their MetaMask wallet and view their ETH and
+USDT balances on the Ethereum mainnet.
 
----
+------------------------------------------------------------------------
 
 ## 🛠 Technology Stack & Why
 
-- **Next.js**  
-  A powerful React framework providing SSR (server-side rendering), file-based routing, and great developer experience. Perfect for building fast, SEO-friendly dApps.
+### **Next.js**
 
-- **React (with TSX)**  
-  Component-based UI library offering flexibility and composability. Using TypeScript (TSX) adds type safety and better maintainability.
+A powerful React framework providing: - Server-side rendering (SSR) -
+File-based routing - Excellent developer experience
 
-- **TailwindCSS**  
-  Utility-first CSS framework for rapid styling with responsive and modern design. Keeps styles consistent and minimal without writing custom CSS.
+Perfect for building fast, SEO-friendly dApps.
 
-- **Wagmi**  
-  React hooks library designed for Ethereum, simplifying wallet connection, contract interactions, and balance fetching.
+### **React (with TSX)**
 
-- **MetaMask SDK**  
-  Latest MetaMask integration enabling seamless wallet connection, improved mobile support, and enhanced developer logging.
+-   Component-based UI library\
+-   Flexible and composable\
+-   TypeScript (TSX) adds type safety and maintainability
 
----
+### **TailwindCSS**
 
-## 📁 Project Structure Explanation
+-   Utility-first CSS framework\
+-   Rapid styling\
+-   Responsive and modern design\
+-   Minimal custom CSS required
 
+### **Wagmi**
+
+-   React hooks library for Ethereum\
+-   Simplifies:
+    -   Wallet connections\
+    -   Contract interactions\
+    -   Balance fetching
+
+### **MetaMask SDK**
+
+-   Official MetaMask integration\
+-   Seamless wallet connection\
+-   Improved mobile support\
+-   Enhanced developer logging
+
+------------------------------------------------------------------------
+
+## 📁 Project Structure
+
+``` bash
 app/
-├── globals.css # Tailwind global styles and resets
-├── icon.png # App icon for favicon or manifest
-├── layout.tsx # Root layout wrapping all pages (includes Wagmi & MetaMask setup)
-├── page.tsx # Home page component: Connect wallet + display balances
-├── providers.tsx # React context/provider setup (e.g. WagmiConfig)
+├── globals.css          # Tailwind global styles and resets
+├── icon.png             # App icon (favicon/manifest)
+├── layout.tsx           # Root layout (Wagmi & MetaMask setup)
+├── page.tsx             # Home page (connect wallet + balances)
+├── providers.tsx        # React providers (e.g. WagmiConfig)
+
 components/
-├── ui/ # Reusable UI components (buttons, balance display, etc)
-├── Hero.tsx # Hero section component (landing page intro)
-├── navbar.tsx # Navigation bar component
+├── ui/                  # Reusable UI components
+├── Hero.tsx             # Landing page hero section
+├── Navbar.tsx           # Navigation bar component
+
 lib/
-├── utils.ts # Utility functions (formatting balances, addresses)
-node_modules/ # Dependencies
+├── utils.ts             # Utility functions (format balances, addresses)
+
 public/
-├── *.svg # Icons and SVG assets (MetaMask logo, arrows, etc)
-.gitignore # Git ignore rules
-components.json # Custom config or metadata for components (if any)
-eslint.config.mjs # ESLint config file
-next-env.d.ts # Next.js TypeScript environment definitions
-next.config.ts # Next.js configuration (e.g. for Tailwind)
-package.json # Project manifest with dependencies & scripts
-pnpm-lock.yaml # Lock file for pnpm package manager
-postcss.config.mjs # PostCSS configuration for TailwindCSS
-README.md # This README file
-tailwind.config.ts # TailwindCSS configuration
-tsconfig.json # TypeScript configuration
+├── *.svg                # Static SVG assets
 
-### Why This Structure?
+# Root Files
+.gitignore
+components.json
+eslint.config.mjs
+next-env.d.ts
+next.config.ts
+package.json
+pnpm-lock.yaml
+postcss.config.mjs
+README.md
+tailwind.config.ts
+tsconfig.json
+```
 
-- **`app/`**  
-  Following Next.js 13+ **App Router** convention, placing page and layout components here ensures seamless routing and layout composition.
+------------------------------------------------------------------------
 
-- **`components/`**  
-  Keeps UI modular and reusable; splitting out common elements like navbar and hero improves maintainability.
+## 🧠 Why This Structure?
 
-- **`lib/`**  
-  Utility and helper functions separate from components keep code organized.
+### `app/`
 
-- **`public/`**  
-  Static assets like SVGs and images served directly for easy access.
+Follows the Next.js 13+ **App Router** convention.\
+Keeps routing and layout composition clean and scalable.
 
-- Configuration files at the root keep project-wide settings transparent and centralized.
+### `components/`
 
----
+Encourages modular, reusable UI components for better maintainability.
+
+### `lib/`
+
+Separates helper functions from UI logic to keep components clean.
+
+### `public/`
+
+Stores static assets that are served directly by Next.js.
+
+### Root Configuration Files
+
+Centralized project configuration for: - TypeScript - ESLint -
+TailwindCSS - PostCSS - Next.js
+
+------------------------------------------------------------------------
 
 ## 🚀 Getting Started
 
-1. Clone the repo  
-2. Run `pnpm install` (or `npm install`)  
-3. Start the dev server: `pnpm dev`  
-4. Open `http://localhost:3000` and connect your MetaMask wallet
+### 1️⃣ Clone the repository
 
----
+``` bash
+git clone <your-repo-url>
+cd <project-folder>
+```
+
+### 2️⃣ Install dependencies
+
+``` bash
+pnpm install
+# or
+npm install
+```
+
+### 3️⃣ Start the development server
+
+``` bash
+pnpm dev
+# or
+npm run dev
+```
+
+### 4️⃣ Open the app
+
+Visit:
+
+    http://localhost:3000
+
+Then connect your MetaMask wallet 🎉
+
+------------------------------------------------------------------------
 
 ## 💡 Summary
 
-This setup offers a robust, scalable, and developer-friendly foundation for Ethereum dApps with:
+This project provides a scalable and developer-friendly foundation for
+Ethereum dApps using:
 
-- **Next.js** for SSR and routing  
-- **React + TSX** for type-safe UI  
-- **TailwindCSS** for rapid styling  
-- **Wagmi** for simplified wallet & blockchain interactions  
-- **MetaMask SDK** for smooth wallet connectivity and enhanced mobile support
+-   **Next.js** --- SSR & routing\
+-   **React + TypeScript** --- Type-safe UI\
+-   **TailwindCSS** --- Rapid modern styling\
+-   **Wagmi** --- Simplified blockchain interactions\
+-   **MetaMask SDK** --- Smooth wallet connectivity
 
-The clear project structure promotes maintainability and easy feature extension.
+The clean structure makes it easy to extend with: - Additional tokens -
+Smart contract interactions - Network switching - UI improvements
 
----
+------------------------------------------------------------------------
 
 Happy building! 🚀
-
