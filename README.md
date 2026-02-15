@@ -18,30 +18,30 @@ Perfect for building fast, SEO-friendly dApps.
 
 ### **React (with TSX)**
 
--   Component-based UI library\
--   Flexible and composable\
+-   Component-based UI library
+-   Flexible and composable
 -   TypeScript (TSX) adds type safety and maintainability
 
 ### **TailwindCSS**
 
--   Utility-first CSS framework\
--   Rapid styling\
--   Responsive and modern design\
+-   Utility-first CSS framework
+-   Rapid styling
+-   Responsive and modern design
 -   Minimal custom CSS required
 
 ### **Wagmi**
 
--   React hooks library for Ethereum\
+-   React hooks library for Ethereum
 -   Simplifies:
-    -   Wallet connections\
-    -   Contract interactions\
+    -   Wallet connections
+    -   Contract interactions
     -   Balance fetching
 
 ### **MetaMask SDK**
 
--   Official MetaMask integration\
--   Seamless wallet connection\
--   Improved mobile support\
+-   Official MetaMask integration
+-   Seamless wallet connection
+-   Improved mobile support
 -   Enhanced developer logging
 
 ------------------------------------------------------------------------
@@ -87,7 +87,7 @@ tsconfig.json
 
 ### `app/`
 
-Follows the Next.js 13+ **App Router** convention.\
+Follows the Next.js 13+ **App Router** convention.
 Keeps routing and layout composition clean and scalable.
 
 ### `components/`
@@ -149,10 +149,10 @@ Then connect your MetaMask wallet 🎉
 This project provides a scalable and developer-friendly foundation for
 Ethereum dApps using:
 
--   **Next.js** --- SSR & routing\
--   **React + TypeScript** --- Type-safe UI\
--   **TailwindCSS** --- Rapid modern styling\
--   **Wagmi** --- Simplified blockchain interactions\
+-   **Next.js** --- SSR & routing
+-   **React + TypeScript** --- Type-safe UI
+-   **TailwindCSS** --- Rapid modern styling
+-   **Wagmi** --- Simplified blockchain interactions
 -   **MetaMask SDK** --- Smooth wallet connectivity
 
 The clean structure makes it easy to extend with: - Additional tokens -
