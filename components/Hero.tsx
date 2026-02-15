@@ -4,11 +4,11 @@ import Image from "next/image"
 import { useAccount, useBalance } from "wagmi"
 
 export const Hero = () => {
-  const { isConnected, isReconnecting, address } = useAccount()
-  const { data: ethBalance, isLoading: ethLoading, error: ethError } = useBalance({
+  const { isConnected, address } = useAccount()
+  const { data: ethBalance, error: ethError } = useBalance({
     address
   })
-  const { data: usdtBalance, isLoading: usdtLoading, error: usdtError } = useBalance({
+  const { data: usdtBalance, error: usdtError } = useBalance({
     address,
     token: "0xdAC17F958D2ee523a2206206994597C13D831ec7"
   })
