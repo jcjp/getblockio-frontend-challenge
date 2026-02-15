@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { Separator } from "@/components/ui/separator";
 import { Hero } from "@/components/Hero";
 
