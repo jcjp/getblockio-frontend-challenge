@@ -1,4 +1,4 @@
-i# Next.js Ethereum Wallet with MetaMask SDK, Wagmi, and TailwindCSS
+# Next.js Ethereum Wallet with MetaMask SDK, Wagmi, and TailwindCSS
 
 This project is a modern Ethereum wallet dApp built with **Next.js**,
 **React**, **TailwindCSS**, **Wagmi**, and the **MetaMask SDK**. It
