@@ -6,24 +6,20 @@ import { useAccount, useBalance, useConnect, useDisconnect } from "wagmi"
 import clsx from "clsx"
 
 import { Button } from "@/components/ui/button"
-import { HoverEffect } from "@/components/ui/card-hover-effect"
+import { Balance, HoverEffect } from "@/components/ui/card-hover-effect"
 import { formatAddress } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
 
-type Balance = {
-  title: string
-  description: string
-  link: string
-}
-
 export default function Home() {
-  const { address, isConnected, isConnecting, isReconnecting } = useAccount()
+  const { address, isConnected, isConnecting, isReconnecting, } = useAccount()
   const { connect, connectors } = useConnect()
   const { disconnect } = useDisconnect()
-  const { data: ethBalance, error: ethError } = useBalance({
+  // TODO: Handle loading and error state
+  const { data: ethBalance } = useBalance({
     address
   })
-  const { data: usdtBalance, error: usdtError } = useBalance({
+  // TODO: Handle loading and error state
+  const { data: usdtBalance } = useBalance({
     address,
     token: "0xdAC17F958D2ee523a2206206994597C13D831ec7"
   })
@@ -51,27 +47,29 @@ export default function Home() {
   const formatBigInt = (number: bigint, decimals: number) => Number(number) / 10 ** decimals
 
   useEffect(() => {
-    console.log(ethBalance)
-    if (ethBalance?.value && usdtBalance?.symbol) {
-      setBalances([
-        {
-          title: "Address",
-          description: formatAddress(address),
-          link: "#1",
-        },
-        {
-          title: "ETH",
-          description: formatBigInt(ethBalance.value, ethBalance.decimals).toFixed(12),
-          link: "#2"
-        },
-        {
-          title: "USDT",
-          description: formatBigInt(usdtBalance.value, usdtBalance.decimals).toFixed(2),
-          link: "#3"
-        },
-      ])
-    }
-  }, [ethBalance, usdtBalance, isConnected])
+    const inProgress = isConnecting || isReconnecting
+
+    setBalances([
+      {
+        title: "Address",
+        description: address ? formatAddress(address) : "-",
+        link: "#1",
+        loading: !address && inProgress,
+      },
+      {
+        title: "ETH",
+        description: ethBalance?.value ? formatBigInt(ethBalance.value, ethBalance.decimals).toFixed(12) : "-",
+        link: "#2",
+        loading: !ethBalance?.value && inProgress,
+      },
+      {
+        title: "USDT",
+        description: usdtBalance?.symbol ? formatBigInt(usdtBalance.value, usdtBalance.decimals).toFixed(2) : "-",
+        link: "#3",
+        loading: !usdtBalance?.symbol && inProgress,
+      },
+    ])
+  }, [ethBalance, usdtBalance, isConnected, isConnecting, isReconnecting])
 
   const onConnectWallet = () => connect({ connector })
   const onDisconnectWallet = () => disconnect()
@@ -93,7 +91,7 @@ export default function Home() {
           }
         </div>
       </section>
-      
+
       <div className="max-w-5xl mx-auto px-8">
         <HoverEffect items={balances} />
       </div>
@@ -121,10 +119,14 @@ export default function Home() {
           </div>
 
           <p className="text-zinc-500 tracking-wide leading-relaxed text-[10px]">
-            This website is not affiliated with or endorsed by GetBlock.io, MetaMask, Wagmi or any company.
-            This is only for demonstration purposes and a personal project the website connects to the wallet
-            MetaMask if allowed. Built using NextJS, React, Wagmi, MetaMask SDK, TypeScript, TailwindCSS and
-            deployed to Cloudflare.
+            This website is an independent project created solely for educational and demonstration purposes.
+            It is not affiliated with, endorsed by, sponsored by, or in any way officially connected to
+            GetBlock.io, MetaMask, Wagmi, or any of their parent companies, subsidiaries, or affiliates.
+            All third-party trademarks, trade names, and logos referenced herein are the property of their
+            respective owners. The creator of this project is not an employee, contractor, or representative
+            of any of the aforementioned entities. Any use of third-party services is solely for
+            demonstrational and academic purposes. Built using Next.js, React, Wagmi, MetaMask SDK,
+            TypeScript, TailwindCSS, and deployed to Cloudflare.
           </p>
 
         </div>

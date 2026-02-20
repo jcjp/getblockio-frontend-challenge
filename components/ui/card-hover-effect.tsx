@@ -3,16 +3,23 @@ import { AnimatePresence, motion } from "motion/react"
 
 import { useState } from "react"
 import { CanvasText } from "./canvas-text"
+import { LoaderOne } from "./loader"
+
+export type Item = {
+  title: string
+  description: string
+  link: string
+}
+
+export type Balance = Item & {
+  loading?: boolean
+}
 
 export const HoverEffect = ({
   items,
   className,
 }: {
-  items: {
-    title: string
-    description: string
-    link: string
-  }[]
+  items: Balance[]
   className?: string
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -51,7 +58,7 @@ export const HoverEffect = ({
           </AnimatePresence>
           <Card>
             <CardTitle text={item.title} />
-            <CardDescription>{item.description}</CardDescription>
+            <CardDescription loading={item.loading} description={item.description} />
           </Card>
         </a>
       ))}
@@ -69,7 +76,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 min-w-[300px]",
         className
       )}
     >
@@ -109,11 +116,19 @@ export const CardTitle = ({
 }
 export const CardDescription = ({
   className,
-  children,
+  description,
+  loading,
 }: {
   className?: string
-  children: React.ReactNode
+  description: string
+  loading?: boolean
 }) => {
+  if (loading) {
+    return <div className="mt-10 mb-4">
+      <LoaderOne />
+    </div>
+  }
+
   return (
     <p
       className={cn(
@@ -121,7 +136,7 @@ export const CardDescription = ({
         className
       )}
     >
-      {children}
+      {description}
     </p>
   )
 }
