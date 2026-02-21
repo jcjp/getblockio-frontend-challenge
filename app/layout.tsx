@@ -23,6 +23,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "MetaMask SDK Quickstart",
   description: "MetaMask SDK Quickstart app",
+  verification: {
+    google: "s7yrtcx-82dNdGuUrGabi_-1dIK5fgXXbHE_M0xPVwI",
+  },
 };
 
 export default async function RootLayout({
