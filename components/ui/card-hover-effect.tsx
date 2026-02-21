@@ -22,7 +22,7 @@ export const HoverEffect = ({
   items: Balance[]
   className?: string
 }) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
     <div
@@ -95,6 +95,7 @@ export const CardTitle = ({
 }) => {
   return (
     <CanvasText
+      className={className}
       text={text}
       backgroundClassName="bg-blue-600 dark:bg-blue-700"
       colors={[

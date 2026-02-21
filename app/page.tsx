@@ -11,7 +11,7 @@ import { formatAddress } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
 
 export default function Home() {
-  const { address, isConnected, isConnecting, isReconnecting, } = useAccount()
+  const { address, isConnected, isConnecting, isReconnecting } = useAccount()
   const { connect, connectors } = useConnect()
   const { disconnect } = useDisconnect()
   // TODO: Handle loading and error state
